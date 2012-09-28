@@ -1,0 +1,17 @@
+{
+  "author": "lauris <lauris@ma-1.lv>",
+  "name": "tidy",
+  "description": "tidy bad html strings",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git@s9:tidy.git"
+  },
+  "main": "tidy.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": ""
+  }
+}
