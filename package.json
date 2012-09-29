@@ -1,11 +1,11 @@
 {
   "name": "htmltidy",
-  "description": "tidy bad html strings",
+  "description": "tidy bad html",
   "version": "0.0.1",
   "author": "lauris <lauris@ma-1.lv>",
   "main": "tidy.js",
   "engines": {
     "node": ">6.0"
-  }
+  },
   "os" : [ "linux","win32" ]
 }
