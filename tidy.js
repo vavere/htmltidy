@@ -1,15 +1,41 @@
-var spawn = require('child_process').spawn;
 var fs = require('fs');
+var path = require('path');
+var spawn = require('child_process').spawn;
+
+var tidyExeRel;
+
+switch (process.platform) {
+    case 'win32':
+        tidyExeRel = path.join('bin', 'tidy.exe');
+        break;
+    case 'linux':
+        tidyExeRel = path.join('bin', 'tidy');;
+        break;
+    default: // compatibility
+        log("tidy can only operate on linux and windows");    
+        process.exit(1);    
+        return;
+}
+
+var tidyExeAbs = path.join(__dirname, tidyExeRel);
+
+// compatibility
+var existsSync = fs.existsSync||path.existsSync;
+
+if (!existsSync(tidyExeAbs)) {
+    log('missing tidy executable: ' + tidyExeRel);    
+    process.exit(2);    
+    return;
+}
 
 function tidy(str, callback) {
     var buffer = '';
-    var error = '';
+        var error = '';
 
     if (!callback) {
         throw new Error('No callback provided for tidy.html');
     }
-    var ptidy = spawn(
-        'tidy',
+    var ptidy = spawn(tidyExeAbs,
         [
             '--doctype','html5',
             '--quiet','y',

@@ -1,1 +1,4 @@
 .c9*
+.settings
+node_modules
+

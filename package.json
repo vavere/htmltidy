@@ -14,4 +14,5 @@
   "engines": {
     "node": ""
   }
+  "os" : [ "linux","win32" ]
 }
