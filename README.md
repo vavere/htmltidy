@@ -28,6 +28,7 @@ var tidy = require('htmltidy').tidy;
 tidy('<table><tr><td>badly formatted html</tr>', function(err, html) { 
     console.log(html); 
 });
+```
 
 API
 ---
@@ -42,6 +43,7 @@ var opts = {
     'tidy-mark':false,
     'indent':true
 }
+```
     
 Platform support
 ----------------
