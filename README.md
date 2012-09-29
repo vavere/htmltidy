@@ -32,7 +32,7 @@ tidy('<table><tr><td>badly formatted html</tr>', function(err, html) {
 
 API
 ---
-*htmltidy.tidy(text, [options], callback)*
+__htmltidy.tidy(text, [options], callback)__
 
 Tidy html like text according.
 Optional configuration [options](http://w3c.github.com/tidy-html5/quickref.html)
@@ -52,9 +52,9 @@ Platform support
 
 Credits
 -------
-*[HTML Tidy Library Project](http://tidy.sourceforge.net/)
-*[HTML Tidy for HTML5](http://w3c.github.com/tidy-html5/)
-*[Michael Leaney](http://stackoverflow.com/a/8220285/770155)
+* [HTML Tidy Library Project](http://tidy.sourceforge.net/)
+* [HTML Tidy for HTML5](http://w3c.github.com/tidy-html5/)
+* [Michael Leaney](http://stackoverflow.com/a/8220285/770155)
 
 
 
