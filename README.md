@@ -34,8 +34,7 @@ API
 ---
 __htmltidy.tidy(text, [options], callback)__
 
-Tidy html like text according.
-Optional configuration [options](http://w3c.github.com/tidy-html5/quickref.html)
+Tidy html like text according optional configuration [options](http://w3c.github.com/tidy-html5/quickref.html).
 
 ```javascript
 var opts = {
