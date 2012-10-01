@@ -7,5 +7,11 @@
   "engines": {
     "node": ">6.0"
   },
-  "os" : [ "linux","win32" ]
+  "os": [
+    "linux",
+    "win32"
+  ],
+  "devDependencies": {
+    "request": "~2.11.4"
+  }
 }
