@@ -97,6 +97,9 @@ function chooseExec() {
         case 'linux':
             tidyExe = 'tidy';
             break;
+	case 'darwin':
+	    tidyExe = path.join('darwin', 'tidy');	
+	    break;		
         default: // unknown
             throw new Error('tidy can only operate on linux and windows');
     }
