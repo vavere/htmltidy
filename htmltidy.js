@@ -13,10 +13,11 @@ var TIDY_ERR = 2;
 var DEFFAUL_OPTS = {
     showWarnings: false,
     tidyMark: false,
+    forceOutput: true,
     quiet: true
     }
 
-// choose suitable executable 
+// choose suitable executable
 var tidyExec = chooseExec();
 
 function TidyWorker(opts) {
@@ -26,8 +27,17 @@ function TidyWorker(opts) {
     this._worker = spawn(tidyExec, parseOpts(merge(opts, DEFFAUL_OPTS)));
     var self = this;
     var errors = '';
+    this._worker.stdin.on('drain', function () {
+        self.emit('drain');
+    });
+    this._worker.stdin.on('error', function () {
+        self.emit('error');
+    });
     this._worker.stdout.on('data', function (data) {
         self.emit('data', data);
+    });
+    this._worker.stdout.on('close', function (data) {
+        self.emit('close');
     });
     this._worker.stderr.on('data', function (data) {
         errors+= data;
@@ -53,11 +63,20 @@ TidyWorker.prototype.end = function (data) {
     this._worker.stdin.end(data);
 }
 
+TidyWorker.prototype.pause  = function () {
+    this._worker.stdout.pause();
+}
+
+TidyWorker.prototype.resume  = function () {
+    this._worker.stdout.resume();
+}
+
 TidyWorker.prototype.destory = function () {
     if (this._worker)
         return;
     this._worker.kill();
     this._worker= null;
+    self.emit('close');
 }
 
 function createWorker(opts) {
@@ -66,7 +85,7 @@ function createWorker(opts) {
 
 function tidy(text, opts, cb) {
     // options are optional
-    if (typeof opts == 'function') { 
+    if (typeof opts == 'function') {
         cb = opts;
         opts = {};
     }
@@ -74,8 +93,8 @@ function tidy(text, opts, cb) {
         throw new Error('no callback provided for tidy');
 
     var tidy = new TidyWorker(opts);
-    var result = null;
-    var error = null;
+    var result = '';
+    var error = '';
     tidy.on('data', function (data) {
         result+= data;
     });
@@ -98,9 +117,9 @@ function chooseExec() {
             tidyExe = path.join('linux', 'tidy');
             break;
 	case 'darwin':
-	    tidyExe = path.join('darwin', 'tidy');	
-	    break;		
-        default: 
+	    tidyExe = path.join('darwin', 'tidy');
+	    break;
+        default:
             throw new Error('unknown execution platform')
     }
     tidyExe = path.join(__dirname, 'bin', tidyExe);
