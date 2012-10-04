@@ -25,13 +25,17 @@ function Pool(opts, size) {
   }
 }
 
+// released several requests with small time shift
+// but use only 3 workers simultaneous
+// keep server resources under control
+
 var QUEUE_SIZE = 3;
 
 var TIDY_OPTS = {
-    indent: true,
-    breakBeforeBr: true,
-    fixUri: true,
-    wrap: 0
+  indent: true,
+  breakBeforeBr: true,
+  fixUri: true,
+  wrap: 0
 }
 
 var pool = new Pool(TIDY_OPTS, QUEUE_SIZE);
