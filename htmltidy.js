@@ -92,16 +92,16 @@ function chooseExec() {
     var tidyExe;
     switch (process.platform) {
         case 'win32':
-            tidyExe = 'tidy.exe';
+            tidyExe = path.join('win32','tidy.exe');
             break;
         case 'linux':
-            tidyExe = 'tidy';
+            tidyExe = path.join('linux', 'tidy');
             break;
 	case 'darwin':
 	    tidyExe = path.join('darwin', 'tidy');	
 	    break;		
-        default: // unknown
-            throw new Error('tidy can only operate on linux and windows');
+        default: 
+            throw new Error('unknown execution platform')
     }
     tidyExe = path.join(__dirname, 'bin', tidyExe);
 
