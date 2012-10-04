@@ -11,9 +11,9 @@ var TIDY_ERR = 2;
 
 // default tidy opts
 var DEFFAUL_OPTS = {
-    "show-warnings": false,
-    "tidy-mark": false,
-    "quiet": true
+    showWarnings: false,
+    tidyMark: false,
+    quiet: true
     }
 
 // choose suitable executable 
@@ -66,7 +66,7 @@ function createWorker(opts) {
 
 function tidy(text, opts, cb) {
     // options are optional
-    if (typeof opts == 'function') {
+    if (typeof opts == 'function') { 
         cb = opts;
         opts = {};
     }
@@ -108,11 +108,11 @@ function chooseExec() {
     return tidyExe;
 }
 
-function parseOpts(opts, defOpts) {
+function parseOpts(opts) {
     opts = opts || {};
     var args = [];
     for (var n in opts) {
-        args.push('--' + n);
+        args.push('--' + toHyphens(n));
         switch (typeof opts[n]) {
             case 'string':
             case 'number':
@@ -126,6 +126,10 @@ function parseOpts(opts, defOpts) {
         }
     }
     return args;
+}
+
+function toHyphens(str) {
+    return str.replace(/([A-Z])/g, function (m, w) { return '-' + w; });
 }
 
 /**
