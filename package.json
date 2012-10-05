@@ -1,7 +1,7 @@
 {
   "name": "htmltidy",
   "description": "tidy bad html",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "lauris <lauris@ma-1.lv>",
   "main": "tidy.js",
   "engines": {
