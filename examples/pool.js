@@ -3,28 +3,38 @@ var tidy = require('../htmltidy');
 
 // demo pool
 function Pool(opts, size) {
+
   var count = 0;
   var queue = [];
 
+  log();
+
+  function log() {
+    console.log('pool: ' + count + ' working ' + queue.length + ' waiting');
+  }
+
   function close() {
     count--;
+    log();
     if (queue.length > 0)
       create(queue.shift());
-  }  
+  }
 
   function create(cb) {
     count++;
     var worker = tidy.createWorker(opts);
     worker.on('close', close);
     cb(worker);
+    log();
   }
-  
+
   this.aquire = function(cb) {
     if (count < size)
       create(cb);
     else
       queue.push(cb);
   }
+
 }
 
 // released several requests with small time shift
@@ -46,10 +56,10 @@ var r = 1;
 var a = 1;
 
 function doRequest() {
-    console.log('request started ' + r);
-  if (r++ < 10) setTimeout(doRequest, 150);
+  console.log('tidy: request ' + r + ' started');
+  if (r++ < 10) setTimeout(doRequest, 100);
     pool.aquire(function(worker) {
-      console.log('worker aquired ' + a++);
+      console.log('tidy: worker ' +  a++ + ' aquired');
       request.get('http://www.yahoo.com/').pipe(worker);
     });
 }
