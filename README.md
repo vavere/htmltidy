@@ -64,7 +64,7 @@ Changelog
       - node Stream support, pipe and so on
       - more examples
       - example with worker pool for web front ends
-      - experimental support for osx [#1](https://github.com/vavere/htmltidy/issues/1)
+      - experimental support for osx #1
     0.0.1 - Sep 29, 2012
       - First NPM release
 
