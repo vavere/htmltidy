@@ -164,7 +164,7 @@ function toHyphens(str) {
  * Overwrites obj2's values with obj1's and adds obj2's if non existent in obj2
  * @param obj1
  * @param obj2
- * @returns obj3 a new object based on obj1 and obj2
+ * @returns a new object based on obj1 and obj2
  */
 function merge(obj1, obj2) {
   obj1 = obj1 || {};
