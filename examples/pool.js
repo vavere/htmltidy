@@ -40,12 +40,12 @@ var TIDY_OPTS = {
 
 var pool = new Pool(TIDY_OPTS, QUEUE_SIZE);
 
-var r = 0;
-var a = 0;
+var r = 1;
+var a = 1;
 
 function doRequest() {
-  if (r++ < 10) setTimeout(doRequest, 150);
     console.log('request started ' + r);
+  if (r++ < 10) setTimeout(doRequest, 150);
     pool.aquire(function(worker) {
       console.log('worker aquired ' + a++);
       request.get('http://www.yahoo.com/').pipe(worker);
