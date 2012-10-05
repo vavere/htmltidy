@@ -26,8 +26,8 @@ function Pool(opts, size) {
 }
 
 // released several requests with small time shift
-// but use only 3 workers simultaneous
-// keep server resources under control
+// but using only 3 workers simultaneous
+// help keep server resources under control
 
 var QUEUE_SIZE = 3;
 
@@ -44,7 +44,7 @@ var r = 0;
 var a = 0;
 
 function doRequest() {
-  if (r++ < 10) setTimeout(doRequest, 100);
+  if (r++ < 10) setTimeout(doRequest, 150);
     console.log('request started ' + r);
     pool.aquire(function(worker) {
       console.log('worker aquired ' + a++);

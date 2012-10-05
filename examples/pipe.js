@@ -10,4 +10,4 @@ var opts = {
 }
 
 var worker = tidy.createWorker(opts);
-request.get('http://www.node.js').pipe(worker).pipe(process.stdout);
+request.get('http://www.nodejs.org').pipe(worker).pipe(process.stdout);
