@@ -6,17 +6,19 @@ function Pool(opts, size) {
   var count = 0;
   var queue = [];
 
+  function close() {
+    count--;
+    if (queue.length > 0)
+      create(queue.shift());
+  }  
+
   function create(cb) {
     count++;
     var worker = tidy.createWorker(opts);
-    worker.on('close', function () {
-      count--;
-      if (queue.length > 0)
-        create(queue.shift());
-    });
+    worker.on('close', close);
     cb(worker);
   }
-
+  
   this.aquire = function(cb) {
     if (count < size)
       create(cb);
