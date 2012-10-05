@@ -10,7 +10,10 @@ function Pool(opts, size) {
   log();
 
   function log() {
-    console.log('pool: ' + count + ' working ' + queue.length + ' waiting');
+    if (count || queue.length)
+      console.log('pool: ' + count + ' working ' + queue.length + ' waiting');
+    else
+      console.log('pool: empty');
   }
 
   function close() {
