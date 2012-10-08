@@ -16,10 +16,8 @@ function Pool(opts, size) {
   }
 
  Object.defineProperty(this, 'length', {
-    get : function() {
-      return q.length();
-    }
-   });
+    get : function() { return q.length(); }
+  });
 
 }
 
@@ -27,7 +25,7 @@ function Pool(opts, size) {
 // but using only 3 workers simultaneous
 // help keep server resources under control
 
-var QUEUE_SIZE = 3;
+var QUEUE_SIZE = 2;
 
 var TIDY_OPTS = {
   indent: true,
