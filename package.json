@@ -5,7 +5,7 @@
   "author": "lauris <lauris@ma-1.lv>",
   "main": "tidy.js",
   "engines": {
-    "node": ">6.0"
+    "node": ">= 0.6.0"
   },
   "os": [
     "linux",
