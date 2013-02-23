@@ -77,7 +77,7 @@ TidyWorker.prototype.resume  = function () {
     this._worker.stdout.resume();
 }
 
-TidyWorker.prototype.destory = function () {
+TidyWorker.prototype.destroy = function () {
   if (this._worker)
     return;
   this._worker.kill();
