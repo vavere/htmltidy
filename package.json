@@ -4,6 +4,7 @@
   "version": "0.0.3",
   "author": "lauris <lauris@ma-1.lv>",
   "main": "htmltidy.js",
+  "repository": "git://github.com/vavere/htmltidy",
   "engines": {
     "node": ">= 0.6.0"
   },
