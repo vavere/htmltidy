@@ -60,6 +60,10 @@ Platform support
 
 Changelog
 ---------
+    0.0.4 - Feb 23, 2013
+      - fixed error in package.json
+    0.0.3 - Jan 11, 2013
+      - fixed engine version error
     0.0.2 - Oct 5, 2012
       - node Stream support, pipe and so on
       - more examples

@@ -3,7 +3,7 @@
   "description": "tidy bad html",
   "version": "0.0.3",
   "author": "lauris <lauris@ma-1.lv>",
-  "main": "tidy.js",
+  "main": "htmltidy.js",
   "engines": {
     "node": ">= 0.6.0"
   },
@@ -13,7 +13,8 @@
     "darwin"
   ],
   "devDependencies": {
-    "request": "~2.11.4"
+    "request": "~2.11.4",
+    "async": "~0.2.1"
   },
   "dependencies": {},
   "optionalDependencies": {}
