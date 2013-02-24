@@ -10,7 +10,7 @@ var TIDY_WARN = 1;
 var TIDY_ERR = 2;
 
 // default tidy opts
-var DEFFAUL_OPTS = {
+var DEFAULT_OPTS = {
   showWarnings: false,
   tidyMark: false,
   forceOutput: true,
@@ -24,7 +24,7 @@ function TidyWorker(opts) {
   Stream.call(this);
   this.writable= true;
   this.readable= true;
-  this._worker = spawn(tidyExec, parseOpts(merge(opts, DEFFAUL_OPTS)));
+  this._worker = spawn(tidyExec, parseOpts(merge(opts, DEFAULT_OPTS)));
   var self = this;
   var errors = '';
   this._worker.stdin.on('drain', function () {
