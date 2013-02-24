@@ -11,20 +11,24 @@ var TIDY_ERR = 2;
 
 // default tidy opts
 var DEFAULT_OPTS = {
-  showWarnings: false,
+  showWarnings: true,
   tidyMark: false,
   forceOutput: true,
-  quiet: true
-  }
+  quiet: false
+};
 
 // choose suitable executable
 var tidyExec = chooseExec();
 
 function TidyWorker(opts) {
   Stream.call(this);
+  
+  // Store a reference to the merged options for consumption by error reporting logic
+  var mergedOpts = merge(opts, DEFAULT_OPTS);
+  
   this.writable= true;
   this.readable= true;
-  this._worker = spawn(tidyExec, parseOpts(merge(opts, DEFAULT_OPTS)));
+  this._worker = spawn(tidyExec, parseOpts(mergedOpts));
   var self = this;
   var errors = '';
   this._worker.stdin.on('drain', function () {
@@ -43,9 +47,24 @@ function TidyWorker(opts) {
     errors+= data;
   });
   this._worker.on('exit', function (code) {
-    if (code > TIDY_WARN)
-      self.emit('error', errors);
+    switch(code){
+      // If there were any warnings or errors from Tiny command
+      case TIDY_WARN:
+        // The user asks to see warnings.
+        if(mergedOpts.showWarnings){
+          self.emit('error', errors);
+        }
+        break;
+      case TIDY_ERR:
+        // The user asks to see errors.
+        if(mergedOpts.showErrors){
+          self.emit('error', errors);
+        }
+        break;
+    }
+    
     self.emit('end');
+    
   });
 }
 
