@@ -1,7 +1,7 @@
 {
   "name": "htmltidy",
   "description": "tidy bad html",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "author": "lauris <lauris@ma-1.lv>",
   "contributors": [
     {
@@ -9,7 +9,7 @@
       "email": "kthrose@netpoetica.com"
     }
   ],
-"main": "htmltidy.js",
+  "main": "htmltidy.js",
   "repository": "git://github.com/vavere/htmltidy",
   "engines": {
     "node": ">= 0.6.0"
