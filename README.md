@@ -60,6 +60,8 @@ Platform support
 
 Changelog
 ---------
+    0.0.5 - Feb 25, 2013
+      - changes contributed by Keith Rosenberg
     0.0.4 - Feb 23, 2013
       - fixed error in package.json
     0.0.3 - Jan 11, 2013

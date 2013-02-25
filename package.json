@@ -3,7 +3,13 @@
   "description": "tidy bad html",
   "version": "0.0.4",
   "author": "lauris <lauris@ma-1.lv>",
-  "main": "htmltidy.js",
+  "contributors": [
+    {
+      "name": "Keith Rosenberg",
+      "email": "kthrose@netpoetica.com"
+    }
+  ],
+"main": "htmltidy.js",
   "repository": "git://github.com/vavere/htmltidy",
   "engines": {
     "node": ">= 0.6.0"
