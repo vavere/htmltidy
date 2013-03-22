@@ -176,7 +176,7 @@ function parseOpts(opts) {
 }
 
 function toHyphens(str) {
-    return str.replace(/([A-Z])/g, function (m, w) { return '-' + w; });
+    return str.replace(/([A-Z])/g, function (m, w) { return '-' + w.toLowerCase(); });
 }
 
 /**
