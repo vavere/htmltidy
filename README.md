@@ -60,6 +60,8 @@ Platform support
 
 Changelog
 ---------
+    0.0.6 - Apr 18, 2013
+      - bug fix update
     0.0.5 - Feb 25, 2013
       - changes contributed by Keith Rosenberg
     0.0.4 - Feb 23, 2013
