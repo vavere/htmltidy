@@ -74,27 +74,27 @@ TidyWorker.prototype.write = function (data) {
   if (!this._worker)
     throw new Error('worker has been destroyed');
   return this._worker.stdin.write(data);
-}
+};
 
 TidyWorker.prototype.end = function (data) {
   if (!this._worker)
     throw new Error('worker has been destroyed');
   this._worker.stdin.end(data);
-}
+};
 
 TidyWorker.prototype.pause  = function () {
   if (!this._worker)
     throw new Error('worker has been destroyed');
   if (this._worker.stdout.pause)
     this._worker.stdout.pause();
-}
+};
 
 TidyWorker.prototype.resume  = function () {
   if (!this._worker)
     throw new Error('worker has been destroyed');
   if (this._worker.stdout.resume)
     this._worker.stdout.resume();
-}
+};
 
 TidyWorker.prototype.destroy = function () {
   if (this._worker)
@@ -117,19 +117,19 @@ function tidy(text, opts, cb) {
   if (typeof cb != 'function')
     throw new Error('no callback provided for tidy');
 
-  var tidy = new TidyWorker(opts);
+  var worker = new TidyWorker(opts);
   var result = '';
   var error = '';
-  tidy.on('data', function (data) {
+  worker.on('data', function (data) {
     result+= data;
   });
-  tidy.on('error', function (data) {
+  worker.on('error', function (data) {
     error+= data;
   });
-  tidy.on('end', function (code) {
+  worker.on('end', function (code) {
     cb(error, result);
   });
-  tidy.end(text);
+  worker.end(text);
 }
 
 function chooseExec() {
@@ -141,9 +141,9 @@ function chooseExec() {
     case 'linux':
       tidyExe = path.join('linux', 'tidy');
       break;
-  	case 'darwin':
-	    tidyExe = path.join('darwin', 'tidy');
-	    break;
+    case 'darwin':
+      tidyExe = path.join('darwin', 'tidy');
+      break;
     default:
         throw new Error('unsupported execution platform');
   }
@@ -190,7 +190,7 @@ function merge(obj1, obj2) {
   obj2 = obj2 || {};
   var obj3 = {};
   for (var attrname in obj2) obj3[attrname] = obj2[attrname];
-  for (var attrname in obj1) obj3[attrname] = obj1[attrname];
+  for (var attrname2 in obj1) obj3[attrname2] = obj1[attrname2];
   return obj3;
 }
 

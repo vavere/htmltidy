@@ -6,14 +6,14 @@ var queue = require('async').queue;
 function Pool(opts, size) {
 
   function worker(text, cb) {
-    tidy(text, opts, cb)
+    tidy(text, opts, cb);
   }
 
   var q = queue(worker, size);
 
   this.tidy = function(text, cb) {
     q.push(text, cb);
-  }
+  };
 
  Object.defineProperty(this, 'length', {
     get : function() { return q.length(); }
@@ -32,7 +32,7 @@ var TIDY_OPTS = {
   breakBeforeBr: true,
   fixUri: true,
   wrap: 0
-}
+};
 
 var pool = new Pool(TIDY_OPTS, QUEUE_SIZE);
 

@@ -11,7 +11,7 @@ var opts = {
   hideComments: true,
   fixUri: true,
   wrap: 0
-}
+};
 
 var worker = tidy.createWorker(opts);
 

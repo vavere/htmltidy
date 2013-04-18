@@ -12,7 +12,8 @@ var opts = {
   hideComments: true,
   fixUri: true,
   wrap: 0
-}
+};
+
 tidy(text, opts, function(err, html) {
     console.log(html);
 });

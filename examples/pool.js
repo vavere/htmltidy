@@ -36,7 +36,7 @@ function Pool(opts, size) {
       create(cb);
     else
       queue.push(cb);
-  }
+  };
 
 }
 
@@ -51,7 +51,7 @@ var TIDY_OPTS = {
   breakBeforeBr: true,
   fixUri: true,
   wrap: 0
-}
+};
 
 var pool = new Pool(TIDY_OPTS, QUEUE_SIZE);
 
