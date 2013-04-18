@@ -11,7 +11,7 @@ var TIDY_ERR = 2;
 
 // default tidy opts
 var DEFAULT_OPTS = {
-  showWarnings: true,
+  showWarnings: false,
   tidyMark: false,
   forceOutput: true,
   quiet: false
