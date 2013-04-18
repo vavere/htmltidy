@@ -101,8 +101,8 @@ TidyWorker.prototype.destroy = function () {
     return;
   this._worker.kill();
   this._worker= null;
-  self.emit('close');
-}
+  this.emit('close');
+};
 
 function createWorker(opts) {
   return new TidyWorker(opts);
