@@ -15,6 +15,8 @@ var opts = {
 };
 
 tidy(text, opts, function(err, html) {
+    if (err) 
+      return console.log('ERROR: ' + err);
     console.log(html);
 });
 
