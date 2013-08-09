@@ -29,8 +29,11 @@ function TidyWorker(opts) {
   this.writable= true;
   this.readable= true;
   this._worker = spawn(tidyExec, parseOpts(mergedOpts));
+  this._worker.stdout.setEncoding('utf8'); //Fix : ISO-8859-1 special characters not translated correctly
+
   var self = this;
   var errors = '';
+  
   this._worker.stdin.on('drain', function () {
     self.emit('drain');
   });
