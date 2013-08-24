@@ -22,10 +22,10 @@ var tidyExec = chooseExec();
 
 function TidyWorker(opts) {
   Stream.call(this);
-  
+
   // Store a reference to the merged options for consumption by error reporting logic
   var mergedOpts = merge(opts, DEFAULT_OPTS);
-  
+
   this.writable= true;
   this.readable= true;
   this._worker = spawn(tidyExec, parseOpts(mergedOpts));
@@ -34,8 +34,8 @@ function TidyWorker(opts) {
   this._worker.stdin.on('drain', function () {
     self.emit('drain');
   });
-  this._worker.stdin.on('error', function () {
-    self.emit('error');
+  this._worker.stdin.on('error', function (errors) {
+    self.emit('error', errors);
   });
   this._worker.stdout.on('data', function (data) {
     self.emit('data', data);
@@ -62,9 +62,9 @@ function TidyWorker(opts) {
         }
         break;
     }
-    
+
     self.emit('end');
-    
+
   });
 }
 
