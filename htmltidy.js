@@ -46,7 +46,7 @@ function TidyWorker(opts) {
   this._worker.stderr.on('data', function (data) {
     errors+= data;
   });
-  this._worker.on('exit', function (code) {
+  this._worker.on('close', function (code) {
     switch(code){
       // If there were any warnings or errors from Tiny command
       case TIDY_WARN:
