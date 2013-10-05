@@ -194,5 +194,41 @@ function merge(obj1, obj2) {
   return obj3;
 }
 
+/**
+ * Task.JS API
+ * @param options
+ * @param done
+ * @see https://github.com/taskjs/spec
+ */
+function run(options, done){
+  var charset = options.charset;
+  var dest = options.dest;
+
+  delete options.src;
+  delete options.dest;
+  delete options.charset;
+
+  var async = exports.async;
+  var file = exports.file;
+
+  async.forEach(exports.files, function(inputFile, cb){
+    var outputFile = dest;
+    if(file.isFile(inputFile) && file.isDirFormat(dest)){
+      var filename = path.basename(inputFile);
+      outputFile = path.join(dest, filename);
+    }
+    var text = file.read(inputFile, charset);
+    tidy(text, options, function(err, html){
+      // output to file
+      if(html){
+        file.write(outputFile, html, charset);
+        exports.log(inputFile, '>', outputFile);
+      }
+      cb(err);
+    });
+  }, done);
+}
+
 exports.createWorker = createWorker;
 exports.tidy = tidy;
+exports.run = run;

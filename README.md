@@ -52,6 +52,24 @@ var worker = tidy.createWorker(opts);
 request.get('http://www.nodejs.org').pipe(worker).pipe(process.stdout);
 ```
 
+[Task runner](https://github.com/modulejs/modjs) support
+--------------------------------------------------------
+
+```javascript
+// Modfile
+module.exports = {
+    plugins: {
+        htmltidy: 'htmltidy'
+    },
+    tasks: {
+        htmltidy: {
+            src: ['foo.html', 'bar.html'],
+            dest: 'output/'
+        }
+    }
+};
+```
+
 Platform support
 ----------------
 * Linux

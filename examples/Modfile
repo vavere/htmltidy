@@ -1,0 +1,11 @@
+module.exports = {
+    plugins: {
+        htmltidy: '../htmltidy'
+    },
+    tasks: {
+        htmltidy: {
+            src: 'input/*.html',
+            dest: 'output/'
+        }
+    }
+};
