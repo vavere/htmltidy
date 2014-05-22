@@ -127,7 +127,7 @@ function tidy(text, opts, cb) {
     error+= data;
   });
   worker.on('end', function (code) {
-    cb(error, result);
+    setImmediate(function(){cb(error, result);});
   });
   worker.end(text);
 }
