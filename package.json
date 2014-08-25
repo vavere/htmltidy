@@ -24,7 +24,7 @@
     "async": "~0.2.1"
   },
   "dependencies": {
-    "shelljs": "~0.3.0",
+    "shelljs": "~0.3.0"
   },
   "optionalDependencies": {}
 }
