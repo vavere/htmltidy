@@ -23,6 +23,8 @@
     "request": "~2.11.4",
     "async": "~0.2.1"
   },
-  "dependencies": {},
+  "dependencies": {
+    "shelljs": "~0.3.0"
+  },
   "optionalDependencies": {}
 }
