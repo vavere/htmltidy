@@ -3,6 +3,7 @@ var inherits = require('util').inherits;
 var fs = require('fs');
 var path = require('path');
 var spawn = require('child_process').spawn;
+var shell = require('shelljs');
 
 // tidy exit codes
 var TIDY_OK = 0;
@@ -133,7 +134,9 @@ function tidy(text, opts, cb) {
 }
 
 function chooseExec() {
-  var tidyExe;
+  var tidyExe = shell.which('tidy');
+  if (tidyExe !== null) { return tidyExe; }
+  
   switch (process.platform) {
     case 'win32':
       tidyExe = path.join('win32','tidy.exe');
@@ -148,10 +151,11 @@ function chooseExec() {
         throw new Error('unsupported execution platform');
   }
   tidyExe = path.join(__dirname, 'bin', tidyExe);
-
-  var existsSync = fs.existsSync||path.existsSync; // node > 0.6
-  if (!existsSync(tidyExe))
+  
+  var existsSync = fs.existsSync || path.existsSync; // node > 0.6
+  if (!existsSync(tidyExe)) {
       throw new Error('missing tidy executable: ' + tidyExe);
+  }
   return tidyExe;
 }
 
