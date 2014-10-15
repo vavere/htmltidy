@@ -18,7 +18,11 @@ var DEFAULT_OPTS = {
 };
 
 // choose suitable executable
-var tidyExec = chooseExec();
+// var tidyExec = chooseExec();
+
+// heroku config:add PATH=vendor/tidy/bin:vendor/tidy/lib:/usr/bin:/bin
+// heroku config:add LD_LIBRARY_PATH=vendor/tidy/lib
+var tidyExec = tidy;
 
 function TidyWorker(opts) {
   Stream.call(this);
