@@ -58,6 +58,13 @@ Platform support
 * Windows
 * OSX (experimental)
 
+
+Running on Heroku Cedar
+-----------------------
+add the following folder to your project root .heroku
+copy the vendor folder from this module into .heroku
+
+
 Changelog
 ---------
     0.0.6 - Apr 18, 2013
