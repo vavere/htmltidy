@@ -61,11 +61,15 @@ Platform support
 
 Running on Heroku Cedar
 -----------------------
-add the following folder to your project root .heroku
-copy the vendor folder from this module into .heroku
+Add the following folder to your project root .heroku
+
+Copy the vendor folder from this module into .heroku
+
 From the root of your project cp -rf ./node_modules/htmltidy/vendor ./.heroku/
 
 http://www.saintsjd.com/2014/05/12/run-vendored-binaries-on-heroku.html
+
+"On your next push to heroku, the system path will recognize the binary dependencies in your path LD_LIBRARY_PATH."
 
 
 Changelog
