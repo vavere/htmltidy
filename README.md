@@ -16,9 +16,9 @@ such as XSL transforms.
 
 Installation
 ------------
-To use this library simply install it using [npm](http://npmjs.org/):
+To use this library add the following line to your package.json dependencies
 
-    npm install htmltidy
+    "htmltidy": "git+https://github.com/bnicholas/htmltidy.git"
 
 Example
 -------
