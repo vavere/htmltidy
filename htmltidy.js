@@ -126,7 +126,7 @@ function tidy(text, opts, cb) {
   worker.on('error', function (data) {
     error+= data;
   });
-  worker.on('end', function (code) {
+  worker.on('close', function (code) {
     cb(error, result);
   });
   worker.end(text);
