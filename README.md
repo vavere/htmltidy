@@ -16,9 +16,9 @@ such as XSL transforms.
 
 Installation
 ------------
-To use this library simply install it using [npm](http://npmjs.org/):
+To use this library add the following line to your package.json dependencies
 
-    npm install htmltidy
+    "htmltidy": "git+https://github.com/bnicholas/htmltidy.git"
 
 Example
 -------
@@ -58,8 +58,25 @@ Platform support
 * Windows
 * OSX (experimental)
 
+
+Running on Heroku Cedar
+-----------------------
+Add the following folder to your project root .heroku
+
+Copy the vendor folder from this module into .heroku
+
+From the root of your project cp -rf ./node_modules/htmltidy/vendor ./.heroku/
+
+http://www.saintsjd.com/2014/05/12/run-vendored-binaries-on-heroku.html
+
+"On your next push to heroku, the system path will recognize the binary dependencies in your path LD_LIBRARY_PATH."
+
+
 Changelog
 ---------
+    0.0.7 - Oct 15, 2014
+      - updated linux binary built against heroku cedar
+      - added required static binary for heroku
     0.0.6 - Apr 18, 2013
       - bug fix update
     0.0.5 - Feb 25, 2013

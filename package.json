@@ -1,12 +1,16 @@
 {
   "name": "htmltidy",
   "description": "tidy bad html",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "author": "lauris <lauris@ma-1.lv>",
   "contributors": [
     {
       "name": "Keith Rosenberg",
       "email": "kthrose@netpoetica.com"
+    },
+    {
+      "name": "Brian Nicholas",
+      "email": "uibri@me.com"
     }
   ],
   "main": "htmltidy.js",
